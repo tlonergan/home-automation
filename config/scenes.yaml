@@ -1,0 +1,6 @@
+- id: 'occupied-living-room'
+  name: Occupied Living Room
+  entities:
+    zwave.lamp_switch:
+      state: 'on'
+      brightness: 255

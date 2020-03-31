@@ -1,0 +1,152 @@
+- id: '1583519290480'
+  alias: Coming Home - Travis
+  description: ''
+  trigger:
+  - entity_id: person.travis_lonergan
+    event: enter
+    platform: zone
+    zone: zone.home_small
+  condition: []
+  action:
+  - device_id: b9f50c93f36c4425809243bbee8c8167
+    domain: switch
+    entity_id: switch.porch
+    type: turn_on
+  - device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    type: turn_off
+- id: '1583897249203'
+  alias: Ensure Living Room Entertainment on
+  description: ''
+  trigger:
+  - device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: switch
+    entity_id: switch.fibaro_system_unknown_type_1401_id_2000_switch_2
+    platform: device
+    type: turned_off
+  condition: []
+  action:
+  - device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: switch
+    entity_id: switch.fibaro_system_unknown_type_1401_id_2000_switch_2
+    type: turn_on
+- id: '1583897395463'
+  alias: Living Room Lamp On - TV Off Trigger
+  description: ''
+  trigger:
+  - below: 100
+    device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: sensor
+    entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
+    platform: device
+    type: value
+  condition:
+  - condition: device
+    device_id: 400ce17dd73d4acfac3555955f05eb3e
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
+    type: is_on
+  - condition: device
+    device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    type: is_on
+  action:
+  - device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    type: turn_on
+- id: '1583983932968'
+  alias: Coming Home - Becky
+  description: ''
+  trigger:
+  - entity_id: person.becky_lonergan
+    event: enter
+    platform: zone
+    zone: zone.home_small
+  condition: []
+  action:
+  - device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    type: turn_on
+  - device_id: b9f50c93f36c4425809243bbee8c8167
+    domain: switch
+    entity_id: switch.porch
+    type: turn_on
+- id: '1584497519601'
+  alias: Living Room Empty
+  description: ''
+  trigger:
+  - device_id: 400ce17dd73d4acfac3555955f05eb3e
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    platform: device
+    type: turned_off
+  - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    platform: device
+    type: turned_off
+  condition:
+  - condition: device
+    device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    type: is_off
+  - condition: device
+    device_id: 400ce17dd73d4acfac3555955f05eb3e
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    type: is_off
+  action:
+  - device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    type: turn_off
+- id: '1584820541363'
+  alias: Washer Done
+  description: ''
+  trigger:
+  - device_id: 247240f6128c4bb598f89ec3c358db01
+    domain: binary_sensor
+    entity_id: binary_sensor.vision_security_zs5101_shock_and_vibration_sensor_sensor
+    platform: device
+    type: turned_off
+  condition: []
+  action:
+  - data:
+      message: Washer is done. Washer is done
+    service: tts.google_translate_say
+- id: '1585658717408'
+  alias: Living Room Occupied
+  description: ''
+  trigger:
+  - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    platform: device
+    type: turned_on
+  condition: []
+  action:
+  - device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    type: turn_on

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: homeassistant/home-assistant:stable
+    volumes:
+      - /etc/home-assistant/config:/config
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    environment:
+      - TZ=America/Phoenix
+    restart: always
+    network_mode: host

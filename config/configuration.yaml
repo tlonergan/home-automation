@@ -1,0 +1,12 @@
+homeassistant:
+  name: Lonergan Automation
+
+zwave:
+  usb_path: /dev/ttyACM0
+
+automation: !include automations.yaml
+scene: !include scenes.yaml
+
+default_config:
+tts:
+  - platform: google_translate
