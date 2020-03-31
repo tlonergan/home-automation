@@ -1,0 +1,75 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@tlonergan 
+alexbussa
+/
+home-assistant
+2
+2
+0
+ Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights
+home-assistant/.gitignore
+@alexbussa alexbussa Ignore alexa_media_player files
+211ad5d on Nov 23, 2019
+41 lines (37 sloc)  360 Bytes
+  
+custom_components
+deps
+json
+lib
+python
+tts
+www
+
+.*
+*.db
+*.db-journal
+*.db_bak
+*.conf
+*.csr
+*.crt
+*.json
+*.key
+*.log
+*.pem
+*.pid
+*.sqlite
+*.xml
+*.xsd
+
+.HAVERSION
+.uuid
+entity_registry.yaml
+gitupdate.sh
+ip_bans.yaml
+known_devices.yaml
+OZW_Log.txt
+secrets.yaml
+zwave_device_config.yaml
+
+!/.gitignore
+!/.travis.yml
+
+/icloud/*
+*.pickle
+*.comget.html
+*.compost.html
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
