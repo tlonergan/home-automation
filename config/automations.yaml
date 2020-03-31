@@ -53,10 +53,7 @@
     entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
     type: is_on
   action:
-  - device_id: ba3750db9274455388311e2a32ab6f35
-    domain: light
-    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
-    type: turn_on
+  - scene: scene.occupied_living_room
 - id: '1583983932968'
   alias: Coming Home - Becky
   description: ''
@@ -117,10 +114,7 @@
       seconds: 0
     type: is_off
   action:
-  - device_id: ba3750db9274455388311e2a32ab6f35
-    domain: light
-    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
-    type: turn_off
+  - scene: scene.dark_living_room
 - id: '1584820541363'
   alias: Washer Done
   description: ''
@@ -136,7 +130,7 @@
       message: Washer is done. Washer is done
     service: tts.google_translate_say
 - id: '1585658717408'
-  alias: Living Room Occupied
+  alias: Living Room Occupied - TV Off
   description: ''
   trigger:
   - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
@@ -144,9 +138,75 @@
     entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
     platform: device
     type: turned_on
+  - device_id: f91ff92073684805bc76f70edfab3a27
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
+    platform: device
+    type: turned_on
+  condition:
+  - below: 100
+    condition: device
+    device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: sensor
+    entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
+    type: is_value
+  action:
+  - scene: scene.occupied_living_room
+- id: '1585664417789'
+  alias: Living Room Occupied - TV On
+  description: ''
+  trigger:
+  - device_id: f91ff92073684805bc76f70edfab3a27
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    platform: device
+    type: turned_on
+  - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
+    domain: binary_sensor
+    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    platform: device
+    type: turned_on
+  condition:
+  - above: 100
+    condition: device
+    device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: sensor
+    entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
+    type: is_value
+  action:
+  - scene: scene.theater_motion
+- id: '1585664770269'
+  alias: Sunset
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
   condition: []
   action:
-  - device_id: ba3750db9274455388311e2a32ab6f35
-    domain: light
-    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
-    type: turn_on
+  - scene: scene.evening
+- id: '1585664858910'
+  alias: Late Night
+  description: ''
+  trigger:
+  - at: '22:30:00'
+    platform: time
+  condition: []
+  action:
+  - scene: scene.late_night
+- id: '1585664894691'
+  alias: Sunrise
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.morning
