@@ -162,7 +162,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 10
+      seconds: 30
     platform: device
     type: turned_on
   - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
@@ -171,7 +171,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 10
+      seconds: 30
     platform: device
     type: turned_on
   condition:
