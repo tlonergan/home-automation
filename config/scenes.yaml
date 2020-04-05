@@ -1,39 +1,39 @@
-- id: 'occupied-living-room'
+- id: occupied-living-room
   name: Occupied Living Room
   entities:
     light.lamp_switch_level:
       brightness: 255
       state: 'on'
-- id: 'theater-motion'
+- id: theater-motion
   name: Theater Motion
   entities:
     light.lamp_switch_level:
-      brightness: 40
+      brightness: 60
       state: 'on'
-- id: 'dark-living-room'
+- id: dark-living-room
   name: Dark Living Room
   entities:
     light.lamp_switch_level:
       state: 'off'
-- id: 'evening'
+- id: evening
   name: Evening
   entities:
     switch.porch:
       state: 'on'
     switch.back_porch_north:
-      state: 'on' 
+      state: 'on'
     switch.back_porch_south:
       state: 'on'
-- id: 'late_night'
+- id: late_night
   name: Late Night
   entities:
     switch.porch:
       state: 'on'
     switch.back_porch_north:
-      state: 'off' 
+      state: 'off'
     switch.back_porch_south:
       state: 'off'
-- id: 'morning'
+- id: morning
   name: Morning
   entities:
     switch.porch:
@@ -42,3 +42,9 @@
       state: 'off'
     switch.back_porch_south:
       state: 'off'
+- id: '1585782638364'
+  name: Living Room - Occupied - Late Nite
+  entities: 
+    light.lamp_switch_level:
+      state: 'on'
+      brightness: 40

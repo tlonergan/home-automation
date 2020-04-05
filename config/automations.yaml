@@ -8,14 +8,14 @@
     zone: zone.home_small
   condition: []
   action:
-  - device_id: b9f50c93f36c4425809243bbee8c8167
+  - device_id: 38c69b3c357a4efd87a5c0e0b7e2474a
     domain: switch
     entity_id: switch.porch
     type: turn_on
   - device_id: ba3750db9274455388311e2a32ab6f35
     domain: light
-    entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
-    type: turn_off
+    entity_id: light.lamp_switch_level
+    type: turn_on
 - id: '1583897249203'
   alias: Ensure Living Room Entertainment on
   description: ''
@@ -192,15 +192,6 @@
   condition: []
   action:
   - scene: scene.evening
-- id: '1585664858910'
-  alias: Late Night
-  description: ''
-  trigger:
-  - at: '22:30:00'
-    platform: time
-  condition: []
-  action:
-  - scene: scene.late_night
 - id: '1585664894691'
   alias: Sunrise
   description: ''
@@ -210,3 +201,26 @@
   condition: []
   action:
   - scene: scene.morning
+- id: '1586035770251'
+  alias: TV On
+  description: ''
+  trigger:
+  - above: 100
+    device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: sensor
+    entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
+    platform: device
+    type: value
+  condition: []
+  action:
+  - scene: scene.theater_motion
+- id: '1586036073787'
+  alias: Late Night
+  description: ''
+  trigger:
+  - event: sunset
+    offset: 03:00:00
+    platform: sun
+  condition: []
+  action:
+  - scene: scene.late_night
