@@ -8,7 +8,7 @@
   name: Theater Motion
   entities:
     light.lamp_switch_level:
-      brightness: 60
+      brightness: 70
       state: 'on'
 - id: dark-living-room
   name: Dark Living Room

@@ -42,15 +42,12 @@
     platform: device
     type: value
   condition:
+  - after: sunset
+    condition: sun
   - condition: device
-    device_id: 400ce17dd73d4acfac3555955f05eb3e
-    domain: binary_sensor
-    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
-    type: is_on
-  - condition: device
-    device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
-    domain: binary_sensor
-    entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
+    device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.lamp_switch_level
     type: is_on
   action:
   - scene: scene.occupied_living_room
@@ -76,7 +73,7 @@
   alias: Living Room Empty
   description: ''
   trigger:
-  - device_id: 400ce17dd73d4acfac3555955f05eb3e
+  - device_id: f91ff92073684805bc76f70edfab3a27
     domain: binary_sensor
     entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
     for:
@@ -84,7 +81,7 @@
       minutes: 10
       seconds: 0
     platform: device
-    type: turned_off
+    type: turned_on
   - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
     domain: binary_sensor
     entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor
@@ -105,13 +102,9 @@
       seconds: 0
     type: is_off
   - condition: device
-    device_id: 400ce17dd73d4acfac3555955f05eb3e
+    device_id: f91ff92073684805bc76f70edfab3a27
     domain: binary_sensor
     entity_id: binary_sensor.aeotec_limited_zwa005_trisensor_sensor_2
-    for:
-      hours: 0
-      minutes: 5
-      seconds: 0
     type: is_off
   action:
   - scene: scene.dark_living_room
@@ -181,6 +174,11 @@
     domain: sensor
     entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
     type: is_value
+  - condition: device
+    device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.lamp_switch_level
+    type: is_off
   action:
   - scene: scene.theater_motion
 - id: '1585664770269'
@@ -211,7 +209,12 @@
     entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
     platform: device
     type: value
-  condition: []
+  condition:
+  - condition: device
+    device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.lamp_switch_level
+    type: is_on
   action:
   - scene: scene.theater_motion
 - id: '1586036073787'
