@@ -145,6 +145,7 @@
     type: is_value
   action:
   - scene: scene.occupied_living_room
+  mode: single
 - id: '1585664417789'
   alias: Living Room Occupied - TV On
   description: ''
@@ -155,7 +156,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 30
+      seconds: 10
     platform: device
     type: turned_on
   - device_id: 4cb9f6acbe3c4b82bfbb8fdaa2419442
@@ -164,7 +165,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 30
+      seconds: 10
     platform: device
     type: turned_on
   condition:
@@ -227,3 +228,26 @@
   condition: []
   action:
   - scene: scene.late_night
+- id: '1590274083091'
+  alias: TV On And Lamp On
+  description: ''
+  trigger:
+  - below: 100
+    device_id: 4ddbbe8870744afba0b009d5e93093a5
+    domain: sensor
+    entity_id: sensor.fibaro_system_unknown_type_1401_id_2000_power
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+    platform: device
+    type: value
+  condition:
+  - condition: device
+    device_id: ba3750db9274455388311e2a32ab6f35
+    domain: light
+    entity_id: light.lamp_switch_level
+    type: is_on
+  action:
+  - scene: scene.occupied_living_room
+  mode: single
